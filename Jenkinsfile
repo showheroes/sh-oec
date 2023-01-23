@@ -1,7 +1,6 @@
 def buildImage() {
     sh 'gcloud auth activate-service-account --key-file=${GCE_SERVICE_ACCOUNT_KEY}'
     sh 'gcloud auth configure-docker'
-    sh 'git clone ${TARGET_IMAGE} '
     sh 'docker build . -t ${TARGET_IMAGE}'
     sh 'utils/jenkins/push_image.sh'
 }
